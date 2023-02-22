@@ -22,32 +22,30 @@ const Card = () => {
     //     setCurrentPokemon(morePokemon)
     // }
     return (
-        <div className='cardContainer'>
+        <div className='row'>
             {/* {listPokemon.map((pokemon) => ( */}
-            <div className='cardsPoke'>
+            <div className='column'>
                 <div className='card'>
                     <div className='cardImage'></div>
-                    <div className='cardContent'>
-                        {/* <h4>{pokemon}</h4> */}
-                        <h4>pikachu</h4>
-                        <p>texto</p>
-                    </div>
+                    {/* <h4>{pokemon}</h4> */}
+                    <h4>pikachu</h4>
+                    <p>texto</p>
                 </div>
+            </div>
+            <div className='column'>
                 <div className='card'>
                     <div className='cardImage'></div>
-                    <div className='cardContent'>
-                        {/* <h4>{pokemon}</h4> */}
-                        <h4>pikachu</h4>
-                        <p>texto</p>
-                    </div>
+                    {/* <h4>{pokemon}</h4> */}
+                    <h4>pikachu</h4>
+                    <p>texto</p>
                 </div>
+            </div>
+            <div className='column'>
                 <div className='card'>
                     <div className='cardImage'></div>
-                    <div className='cardContent'>
-                        {/* <h4>{pokemon}</h4> */}
-                        <h4>pikachu</h4>
-                        <p>texto</p>
-                    </div>
+                    {/* <h4>{pokemon}</h4> */}
+                    <h4>pikachu</h4>
+                    <p>texto</p>
                 </div>
             </div>
             {/* ))} */}
