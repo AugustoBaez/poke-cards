@@ -1,0 +1,39 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* .App {
+  text-align: center;
+} */
+
+.cardContainer {
+  background-color: red;
+  width: 100%;
+  height: 100%;
+  /* padding: 5%; */
+  /* margin: 20%; */
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background-color: green;
+  width: 200px;
+  height: 300px;
+  display: block;
+  justify-content: space-around;
+}
+
+.cardImage {
+  background-color: grey;
+  height: 50%;
+}
+
+.cardsPoke {
+  background-color: aqua;
+  width: 80%;
+  height: 100%;
+  justify-content: space-between;
+  display: flex;
+}
