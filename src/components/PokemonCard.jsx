@@ -1,59 +1,42 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Card } from "react-bootstrap";
 
-function PokemonCard({ pokemonUrl }) {
+const PokemonCard = ({ pokemonUrl }) => {
   const [pokemon, setPokemon] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
-    axios
-      .get(pokemonUrl)
-      .then((response) => {
-        setPokemon(response.data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        setIsLoading(false);
-      });
+    const fetchPokemon = async () => {
+      const response = await axios.get(pokemonUrl);
+      setPokemon(response.data);
+    };
+    fetchPokemon();
   }, [pokemonUrl]);
 
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
-  if (!pokemon) {
-    return <p>Failed to load data for this Pokemon</p>;
-  }
-
-  const { name, id, stats } = pokemon;
-
-  const attack = stats.find((stat) => stat.stat.name === "attack").base_stat;
-  const defense = stats.find((stat) => stat.stat.name === "defense").base_stat;
-  const speed = stats.find((stat) => stat.stat.name === "speed").base_stat;
-
-  return (
-    <Card className="pokemon-card">
+  return pokemon ? (
+    <Card>
       <Card.Img
         variant="top"
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
-        alt={name}
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
+        alt={pokemon.name}
+        style={{ maxWidth: "100%", height: "auto", margin: "auto" }}
       />
       <Card.Body>
-        <Card.Title>
-          {name} #{id}
-        </Card.Title>
+        <Card.Title>{pokemon.name}</Card.Title>
         <Card.Text>
-          Attack: {attack} / Defense: {defense} / Speed: {speed}
+          National ID: {pokemon.id}
+          <br />
+          Attack: {pokemon.stats[1].base_stat}
+          <br />
+          Defense: {pokemon.stats[2].base_stat}
+          <br />
+          Speed: {pokemon.stats[5].base_stat}
         </Card.Text>
       </Card.Body>
     </Card>
+  ) : (
+    <p>Loading...</p>
   );
-}
+};
 
 export default PokemonCard;
-
-
-
